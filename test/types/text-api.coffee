@@ -47,6 +47,10 @@ genTests = (type) ->
     test.strictEqual doc.getText(), 'mum'
     test.strictEqual doc.getLength(), 3
 
+    doc.setText 'dad'
+    test.strictEqual doc.getText(), 'dad'
+    test.strictEqual doc.getLength(), 3
+
     test.done()
 
   'randomize generating functions': (test) ->

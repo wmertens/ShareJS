@@ -26,6 +26,14 @@ type.api =
     @submitOp op, callback
     op
 
+  setText: (text, callback) ->
+    cbCount = 2
+    realcb = (err, result) ->
+      cbCount--
+      callback(err, result) if callback and cbCount is 0
+    @del 0, @snapshot.length, realcb
+    @insert 0, text, realcb
+
   _register: ->
     @on 'remoteop', (op) ->
       pos = 0
